@@ -31,20 +31,6 @@ describe('MidiFileSlicer', function () {
                         velocity: 127
                     },
                     time: 0.25
-                }, {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.5
-                }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.75
                 }
             ]);
         });
@@ -88,34 +74,6 @@ describe('MidiFileSlicer', function () {
                         velocity: 127
                     },
                     time: 0.375
-                }, {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.5
-                }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.625
-                }, {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.75
-                }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
-                    },
-                    time: 0.875
                 }
             ]);
         });
