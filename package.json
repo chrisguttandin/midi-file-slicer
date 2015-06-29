@@ -23,8 +23,15 @@
     "load-grunt-config": "^0.17.1",
     "mocha": "^2.2.5"
   },
+  "homepage": "https://github.com/chrisguttandin/midi-file-slicer",
+  "license": "MIT",
   "main": "src/midi-file-slicer.js",
   "name": "midi-file-slicer",
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisguttandin/midi-file-slicer.git"
+  },
   "scripts": {
     "test": "grunt test"
   },
