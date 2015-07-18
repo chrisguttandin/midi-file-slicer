@@ -31,8 +31,8 @@ class MidiFileSlicer {
     slice (start, end) {
         var events = [];
 
-        end = end / ((this._microsecondsPerBeat / this._json.division) / 1000000);
-        start = start / ((this._microsecondsPerBeat / this._json.division) / 1000000);
+        end = end / ((this._microsecondsPerBeat / this._json.division) / 1000);
+        start = start / ((this._microsecondsPerBeat / this._json.division) / 1000);
 
         for (let i = 0, length = this._json.tracks.length; i < length; i += 1) {
             let offset = 0,
@@ -44,7 +44,7 @@ class MidiFileSlicer {
                 offset += event.delta;
 
                 if (offset >= start && offset < end) {
-                    event.time = (offset - start) * ((this._microsecondsPerBeat / this._json.division)  / 1000000);
+                    event.time = (offset - start) * ((this._microsecondsPerBeat / this._json.division) / 1000);
 
                     events.push(event);
                 }
