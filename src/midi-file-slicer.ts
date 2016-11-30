@@ -1,19 +1,23 @@
-'use strict';
+export class MidiFileSlicer {
 
-class MidiFileSlicer {
+    private _json;
 
-    constructor (options) {
-        this._json = options.json;
+    private _microsecondsPerBeat;
+
+    constructor ({ json }) {
+        this._json = json;
 
         this._gatherMicrosecondsPerBeat();
     }
 
-    _gatherMicrosecondsPerBeat () {
-        tracks: for (let i = 0, length = this._json.tracks.length; i < length; i += 1) {
-            let track = this._json.tracks[i];
+    private _gatherMicrosecondsPerBeat () {
+        const tracks = this._json.tracks;
+
+        tracks: for (let i = 0, length = tracks.length; i < length; i += 1) {
+            const track = tracks[i];
 
             for (let j = 0, length = track.length; j < length; j += 1) {
-                let event = track[j];
+                const event = track[j];
 
                 if (event.setTempo !== undefined) {
                     this._microsecondsPerBeat = event.setTempo.microsecondsPerBeat;
@@ -28,18 +32,21 @@ class MidiFileSlicer {
         }
     }
 
-    slice (start, end) {
-        var events = [];
+    public slice (start, end) {
+        const events = [];
 
         end = end / ((this._microsecondsPerBeat / this._json.division) / 1000);
         start = start / ((this._microsecondsPerBeat / this._json.division) / 1000);
 
-        for (let i = 0, length = this._json.tracks.length; i < length; i += 1) {
-            let offset = 0,
-                track = this._json.tracks[i];
+        const tracks = this._json.tracks;
+
+        for (let i = 0, length = tracks.length; i < length; i += 1) {
+            let offset = 0;
+
+            const track = tracks[i];
 
             for (let j = 0, length = track.length; j < length; j += 1) {
-                let event = track[j];
+                const event = track[j];
 
                 offset += event.delta;
 
@@ -59,5 +66,3 @@ class MidiFileSlicer {
     }
 
 }
-
-module.exports.MidiFileSlicer = MidiFileSlicer;
