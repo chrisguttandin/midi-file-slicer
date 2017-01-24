@@ -16,7 +16,7 @@ export class MidiFileSlicer {
         tracks: for (let i = 0, length = tracks.length; i < length; i += 1) {
             const track = tracks[i];
 
-            for (let j = 0, length = track.length; j < length; j += 1) {
+            for (let j = 0, lngth = track.length; j < lngth; j += 1) {
                 const event = track[j];
 
                 if (event.setTempo !== undefined) {
@@ -45,7 +45,7 @@ export class MidiFileSlicer {
 
             const track = tracks[i];
 
-            for (let j = 0, length = track.length; j < length; j += 1) {
+            for (let j = 0, lngth = track.length; j < lngth; j += 1) {
                 const event = track[j];
 
                 offset += event.delta;
