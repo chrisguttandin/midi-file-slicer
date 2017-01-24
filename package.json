@@ -16,7 +16,7 @@
     "grunt-sh": "^0.1.4",
     "grunt-tslint": "^4.0.0",
     "gruntify-eslint": "^3.1.0",
-    "husky": "^0.12.0",
+    "husky": "^0.13.1",
     "json-loader": "^0.5.4",
     "karma": "^1.0.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -31,10 +31,10 @@
     "rollup-plugin-babel": "^2.6.1",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
-    "ts-loader": "^1.2.2",
+    "ts-loader": "^2.0.0",
     "tslint-config-holy-grail": "^5.0.0",
     "typescript": "^2.1.4",
-    "webpack": "^2.1.0-beta.27"
+    "webpack": "^2.2.0"
   },
   "files": [
     "build/es5/",
