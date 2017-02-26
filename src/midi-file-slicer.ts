@@ -13,10 +13,14 @@ export class MidiFileSlicer {
     private _gatherMicrosecondsPerBeat () {
         const tracks = this._json.tracks;
 
-        tracks: for (let i = 0, length = tracks.length; i < length; i += 1) {
+        const length = tracks.length;
+
+        tracks: for (let i = 0; i < length; i += 1) {
             const track = tracks[i];
 
-            for (let j = 0, lngth = track.length; j < lngth; j += 1) {
+            const lngth = track.length;
+
+            for (let j = 0; j < lngth; j += 1) {
                 const event = track[j];
 
                 if (event.setTempo !== undefined) {
@@ -40,12 +44,16 @@ export class MidiFileSlicer {
 
         const tracks = this._json.tracks;
 
-        for (let i = 0, length = tracks.length; i < length; i += 1) {
+        const length = tracks.length;
+
+        for (let i = 0; i < length; i += 1) {
             let offset = 0;
 
             const track = tracks[i];
 
-            for (let j = 0, lngth = track.length; j < lngth; j += 1) {
+            const lngth = track.length;
+
+            for (let j = 0; j < lngth; j += 1) {
                 const event = track[j];
 
                 offset += event.delta;
