@@ -42,9 +42,9 @@
     "src/"
   ],
   "homepage": "https://github.com/chrisguttandin/midi-file-slicer",
-  "jsnext:main": "build/es2015/module.js",
   "license": "MIT",
   "main": "build/es5/bundle.js",
+  "module": "build/es2015/module.js",
   "name": "midi-file-slicer",
   "repository": {
     "type": "git",
