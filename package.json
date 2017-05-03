@@ -39,12 +39,13 @@
   "files": [
     "build/es5/",
     "build/es2015/",
+    "build/esm/",
     "src/"
   ],
   "homepage": "https://github.com/chrisguttandin/midi-file-slicer",
   "license": "MIT",
   "main": "build/es5/bundle.js",
-  "module": "build/es2015/module.js",
+  "module": "build/esm/module.js",
   "name": "midi-file-slicer",
   "repository": {
     "type": "git",
