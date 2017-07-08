@@ -1,17 +1,21 @@
+import { IMidiFile } from 'midi-json-parser-worker';
+import { isIMidiSetTempoEvent } from './guards/midi-set-tempo-event';
+import { IExtendedMidiEvent } from './interfaces';
+
 export class MidiFileSlicer {
 
-    private _json;
+    private _json: IMidiFile;
 
-    private _microsecondsPerBeat;
+    private _microsecondsPerBeat: number;
 
-    constructor ({ json }) {
+    constructor ({ json }: { json: IMidiFile }) {
         this._json = json;
 
         this._gatherMicrosecondsPerBeat();
     }
 
-    public slice (start, end) {
-        const events = [];
+    public slice (start: number, end: number): IExtendedMidiEvent[] {
+        const events: IExtendedMidiEvent[] = [];
 
         end = end / ((this._microsecondsPerBeat / this._json.division) / 1000);
         start = start / ((this._microsecondsPerBeat / this._json.division) / 1000);
@@ -33,9 +37,7 @@ export class MidiFileSlicer {
                 offset += event.delta;
 
                 if (offset >= start && offset < end) {
-                    event.time = (offset - start) * ((this._microsecondsPerBeat / this._json.division) / 1000);
-
-                    events.push(event);
+                    events.push({ ...event, time: (offset - start) * ((this._microsecondsPerBeat / this._json.division) / 1000) });
                 }
 
                 if (offset >= end) {
@@ -60,7 +62,7 @@ export class MidiFileSlicer {
             for (let j = 0; j < lngth; j += 1) {
                 const event = track[j];
 
-                if (event.setTempo !== undefined) {
+                if (isIMidiSetTempoEvent(event)) {
                     this._microsecondsPerBeat = event.setTempo.microsecondsPerBeat;
 
                     break tracks;
