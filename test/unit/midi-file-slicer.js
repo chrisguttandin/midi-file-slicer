@@ -11,17 +11,21 @@ describe('MidiFileSlicer', () => {
 
             expect(midiFileSlicer.slice(500, 1000)).to.deep.equal([
                 {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOn: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 0.00000000000005921189464667502
                 }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOff: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 250.00000000000009
                 }
@@ -33,31 +37,39 @@ describe('MidiFileSlicer', () => {
 
             expect(midiFileSlicer.slice(500, 1000)).to.deep.equal([
                 {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOn: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 0.00000000000005921189464667502
                 }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOff: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 125.00000000000007
                 }, {
-                    delta: 240,
-                    noteOn: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOn: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 250.00000000000009
                 }, {
-                    delta: 240,
-                    noteOff: {
-                        noteNumber: 60,
-                        velocity: 127
+                    event: {
+                        delta: 240,
+                        noteOff: {
+                            noteNumber: 60,
+                            velocity: 127
+                        }
                     },
                     time: 375.0000000000001
                 }

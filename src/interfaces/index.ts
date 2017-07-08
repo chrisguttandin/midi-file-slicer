@@ -1,1 +1,1 @@
-export * from './extended-midi-event';
+export * from './timed-midi-event';
