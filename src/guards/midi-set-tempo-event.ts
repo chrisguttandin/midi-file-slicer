@@ -1,5 +1,5 @@
-import { IMidiEvent, IMidiSetTempoEvent } from 'midi-json-parser-worker';
+import { IMidiSetTempoEvent, TMidiEvent } from 'midi-json-parser-worker';
 
-export const isIMidiSetTempoEvent = (event: IMidiSetTempoEvent | IMidiEvent): event is IMidiSetTempoEvent => {
+export const isIMidiSetTempoEvent = (event: TMidiEvent): event is IMidiSetTempoEvent => {
     return ((<IMidiSetTempoEvent> event).setTempo !== undefined);
 };
