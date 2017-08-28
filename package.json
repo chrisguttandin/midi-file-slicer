@@ -4,7 +4,8 @@
     "url": "https://github.com/chrisguttandin/midi-file-slicer/issues"
   },
   "dependencies": {
-    "midi-json-parser-worker": "^2.1.1"
+    "midi-json-parser-worker": "^2.1.1",
+    "tslint": "^5.7.0"
   },
   "description": "This module is slicing a midi representation into parts.",
   "devDependencies": {
