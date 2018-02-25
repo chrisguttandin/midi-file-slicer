@@ -18,16 +18,14 @@ module.exports = (config) => {
         },
 
         webpack: {
+            mode: 'development',
             module: {
-                loaders: [
-                    {
-                        loader: 'json-loader',
-                        test: /\.json$/
-                    }, {
-                        loader: 'ts-loader',
-                        test: /\.ts?$/
+                rules: [ {
+                    test: /\.ts?$/,
+                    use: {
+                        loader: 'ts-loader'
                     }
-                ]
+                } ]
             },
             resolve: {
                 extensions: [ '.js', '.ts' ]
