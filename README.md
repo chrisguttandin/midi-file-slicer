@@ -1,5 +1,7 @@
 # midi-file-slicer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/chrisguttandin/midi-file-slicer.svg)](https://greenkeeper.io/)
+
 **This module is slicing a midi representation into parts.**
 
 [![tests](https://img.shields.io/travis/chrisguttandin/midi-file-slicer/master.svg?style=flat-square)](https://travis-ci.org/chrisguttandin/midi-file-slicer)
