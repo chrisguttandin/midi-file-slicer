@@ -10,6 +10,7 @@ export class MidiFileSlicer {
 
     constructor ({ json }: { json: IMidiFile }) {
         this._json = json;
+        this._microsecondsPerBeat = 500000;
 
         this._gatherMicrosecondsPerBeat();
     }
@@ -68,10 +69,6 @@ export class MidiFileSlicer {
                     break tracks;
                 }
             }
-        }
-
-        if (this._microsecondsPerBeat === undefined) {
-            this._microsecondsPerBeat = 500000;
         }
     }
 
