@@ -50,7 +50,7 @@ export class MidiFileSlicer {
         return events;
     }
 
-    private _gatherMicrosecondsPerBeat () {
+    private _gatherMicrosecondsPerBeat (): void {
         const tracks = this._json.tracks;
 
         const length = tracks.length;
