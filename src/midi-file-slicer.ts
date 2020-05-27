@@ -6,20 +6,20 @@ export class MidiFileSlicer {
 
     private _json: IMidiFile;
 
-    private _microsecondsPerBeat: number;
+    private _microsecondsPerQuarter: number;
 
     constructor ({ json }: { json: IMidiFile }) {
         this._json = json;
-        this._microsecondsPerBeat = 500000;
+        this._microsecondsPerQuarter = 500000;
 
-        this._gatherMicrosecondsPerBeat();
+        this._gatherMicrosecondsPerQuarter();
     }
 
     public slice (start: number, end: number): ITimedMidiEvent[] {
         const events: ITimedMidiEvent[] = [];
 
-        const endInTicks = end / ((this._microsecondsPerBeat / this._json.division) / 1000);
-        const startInTicks = start / ((this._microsecondsPerBeat / this._json.division) / 1000);
+        const endInTicks = end / ((this._microsecondsPerQuarter / this._json.division) / 1000);
+        const startInTicks = start / ((this._microsecondsPerQuarter / this._json.division) / 1000);
 
         const tracks = this._json.tracks;
 
@@ -38,7 +38,7 @@ export class MidiFileSlicer {
                 offset += event.delta;
 
                 if (offset >= startInTicks && offset < endInTicks) {
-                    events.push({ event, time: (offset - startInTicks) * ((this._microsecondsPerBeat / this._json.division) / 1000) });
+                    events.push({ event, time: (offset - startInTicks) * ((this._microsecondsPerQuarter / this._json.division) / 1000) });
                 }
 
                 if (offset >= endInTicks) {
@@ -50,7 +50,7 @@ export class MidiFileSlicer {
         return events;
     }
 
-    private _gatherMicrosecondsPerBeat (): void {
+    private _gatherMicrosecondsPerQuarter (): void {
         const tracks = this._json.tracks;
 
         const length = tracks.length;
@@ -64,7 +64,7 @@ export class MidiFileSlicer {
                 const event = track[j];
 
                 if (isIMidiSetTempoEvent(event)) {
-                    this._microsecondsPerBeat = event.setTempo.microsecondsPerBeat;
+                    this._microsecondsPerQuarter = event.setTempo.microsecondsPerQuarter;
 
                     break tracks;
                 }

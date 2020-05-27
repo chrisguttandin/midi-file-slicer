@@ -6,7 +6,7 @@
             {
                 "delta": 0,
                 "setTempo": {
-                    "microsecondsPerBeat": 250000
+                    "microsecondsPerQuarter": 250000
                 }
             }, {
                 "delta": 0,
