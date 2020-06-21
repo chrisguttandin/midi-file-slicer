@@ -3,23 +3,22 @@ import { isIMidiSetTempoEvent } from './guards/midi-set-tempo-event';
 import { ITimedMidiEvent } from './interfaces';
 
 export class MidiFileSlicer {
-
     private _json: IMidiFile;
 
     private _microsecondsPerQuarter: number;
 
-    constructor ({ json }: { json: IMidiFile }) {
+    constructor({ json }: { json: IMidiFile }) {
         this._json = json;
         this._microsecondsPerQuarter = 500000;
 
         this._gatherMicrosecondsPerQuarter();
     }
 
-    public slice (start: number, end: number): ITimedMidiEvent[] {
+    public slice(start: number, end: number): ITimedMidiEvent[] {
         const events: ITimedMidiEvent[] = [];
 
-        const endInTicks = end / ((this._microsecondsPerQuarter / this._json.division) / 1000);
-        const startInTicks = start / ((this._microsecondsPerQuarter / this._json.division) / 1000);
+        const endInTicks = end / (this._microsecondsPerQuarter / this._json.division / 1000);
+        const startInTicks = start / (this._microsecondsPerQuarter / this._json.division / 1000);
 
         const tracks = this._json.tracks;
 
@@ -38,7 +37,7 @@ export class MidiFileSlicer {
                 offset += event.delta;
 
                 if (offset >= startInTicks && offset < endInTicks) {
-                    events.push({ event, time: (offset - startInTicks) * ((this._microsecondsPerQuarter / this._json.division) / 1000) });
+                    events.push({ event, time: (offset - startInTicks) * (this._microsecondsPerQuarter / this._json.division / 1000) });
                 }
 
                 if (offset >= endInTicks) {
@@ -50,7 +49,7 @@ export class MidiFileSlicer {
         return events;
     }
 
-    private _gatherMicrosecondsPerQuarter (): void {
+    private _gatherMicrosecondsPerQuarter(): void {
         const tracks = this._json.tracks;
 
         const length = tracks.length;
@@ -71,5 +70,4 @@ export class MidiFileSlicer {
             }
         }
     }
-
 }

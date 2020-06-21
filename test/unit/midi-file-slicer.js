@@ -3,9 +3,7 @@ import dflt from '../fixtures/default.json';
 import twoFourZero from '../fixtures/240-bpm.json';
 
 describe('MidiFileSlicer', () => {
-
     describe('slice()', () => {
-
         it('should slice the midi representation of default.json', () => {
             const midiFileSlicer = new MidiFileSlicer({ json: dflt });
 
@@ -19,7 +17,8 @@ describe('MidiFileSlicer', () => {
                         }
                     },
                     time: 0.00000000000005921189464667502
-                }, {
+                },
+                {
                     event: {
                         delta: 240,
                         noteOff: {
@@ -45,7 +44,8 @@ describe('MidiFileSlicer', () => {
                         }
                     },
                     time: 0.00000000000005921189464667502
-                }, {
+                },
+                {
                     event: {
                         delta: 240,
                         noteOff: {
@@ -54,7 +54,8 @@ describe('MidiFileSlicer', () => {
                         }
                     },
                     time: 125.00000000000007
-                }, {
+                },
+                {
                     event: {
                         delta: 240,
                         noteOn: {
@@ -63,7 +64,8 @@ describe('MidiFileSlicer', () => {
                         }
                     },
                     time: 250.00000000000009
-                }, {
+                },
+                {
                     event: {
                         delta: 240,
                         noteOff: {
@@ -75,7 +77,5 @@ describe('MidiFileSlicer', () => {
                 }
             ]);
         });
-
     });
-
 });

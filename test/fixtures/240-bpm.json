@@ -8,103 +8,120 @@
                 "setTempo": {
                     "microsecondsPerQuarter": 250000
                 }
-            }, {
+            },
+            {
                 "delta": 0,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOn": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 240,
                 "noteOff": {
                     "noteNumber": 60,
                     "velocity": 127
                 }
-            }, {
+            },
+            {
                 "delta": 0,
                 "endOfTrack": true
             }
