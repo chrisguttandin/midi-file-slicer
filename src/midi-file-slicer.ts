@@ -5,69 +5,60 @@ import { ITimedMidiEvent } from './interfaces';
 export class MidiFileSlicer {
     private _json: IMidiFile;
 
-    private _microsecondsPerQuarter: number;
-
     constructor({ json }: { json: IMidiFile }) {
         this._json = json;
-        this._microsecondsPerQuarter = 500000;
-
-        this._gatherMicrosecondsPerQuarter();
     }
 
     public slice(start: number, end: number): ITimedMidiEvent[] {
+        const endInMicroseconds = end * 1000;
         const events: ITimedMidiEvent[] = [];
-
-        const endInTicks = end / (this._microsecondsPerQuarter / this._json.division / 1000);
-        const startInTicks = start / (this._microsecondsPerQuarter / this._json.division / 1000);
-
         const tracks = this._json.tracks;
+        const indexOfNextEvents = tracks.map(() => 0);
+        const offsetOfNextEvents = tracks.map(([{ delta }]) => delta);
+        const startInMicroseconds = start * 1000;
 
-        const length = tracks.length;
+        let currentOffset = offsetOfNextEvents.reduce((min, offset) => Math.min(min, offset), 0);
+        let elapsedMicrosecondsBeforeSetTimeEvent = 0;
+        let microsecondsPerQuarter = 500000;
+        let nextOffset = Number.POSITIVE_INFINITY;
+        let offsetOfSetTimeEvent = 0;
 
-        for (let i = 0; i < length; i += 1) {
-            let offset = 0;
+        while (currentOffset < Number.POSITIVE_INFINITY) {
+            const offsetInMicroseconds =
+                elapsedMicrosecondsBeforeSetTimeEvent +
+                ((currentOffset - offsetOfSetTimeEvent) * microsecondsPerQuarter) / this._json.division;
 
-            const track = tracks[i];
+            if (offsetInMicroseconds >= endInMicroseconds) {
+                break;
+            }
 
-            const lngth = track.length;
+            for (let i = 0; i < tracks.length; i += 1) {
+                if (currentOffset === offsetOfNextEvents[i]) {
+                    const event = tracks[i][indexOfNextEvents[i]];
 
-            for (let j = 0; j < lngth; j += 1) {
-                const event = track[j];
+                    if (isIMidiSetTempoEvent(event)) {
+                        elapsedMicrosecondsBeforeSetTimeEvent = offsetInMicroseconds;
+                        microsecondsPerQuarter = event.setTempo.microsecondsPerQuarter;
+                        offsetOfSetTimeEvent = currentOffset;
+                    }
 
-                offset += event.delta;
+                    if (offsetInMicroseconds >= startInMicroseconds) {
+                        events.push({ event, time: (offsetInMicroseconds - startInMicroseconds) / 1000 });
+                    }
 
-                if (offset >= startInTicks && offset < endInTicks) {
-                    events.push({ event, time: (offset - startInTicks) * (this._microsecondsPerQuarter / this._json.division / 1000) });
-                }
+                    indexOfNextEvents[i] += 1;
 
-                if (offset >= endInTicks) {
-                    break;
+                    const offsetOfNextEvent = currentOffset + tracks[i][indexOfNextEvents[i]]?.delta ?? Number.POSITIVE_INFINITY;
+
+                    offsetOfNextEvents[i] = offsetOfNextEvent;
+                    nextOffset = Math.min(nextOffset, offsetOfNextEvent);
                 }
             }
+
+            currentOffset = nextOffset;
+            nextOffset = Number.POSITIVE_INFINITY;
         }
 
         return events;
-    }
-
-    private _gatherMicrosecondsPerQuarter(): void {
-        const tracks = this._json.tracks;
-
-        const length = tracks.length;
-
-        tracks: for (let i = 0; i < length; i += 1) {
-            const track = tracks[i];
-
-            const lngth = track.length;
-
-            for (let j = 0; j < lngth; j += 1) {
-                const event = track[j];
-
-                if (isIMidiSetTempoEvent(event)) {
-                    this._microsecondsPerQuarter = event.setTempo.microsecondsPerQuarter;
-
-                    break tracks;
-                }
-            }
-        }
     }
 }
