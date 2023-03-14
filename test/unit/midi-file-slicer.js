@@ -1,12 +1,12 @@
 import { MidiFileSlicer } from '../../src/midi-file-slicer';
-import dflt from '../fixtures/default.json';
-import mixedBpm from '../fixtures/mixed-bpm.json';
-import twoFourZero from '../fixtures/240-bpm.json';
+import multipleSetTempoEvents from '../fixtures/multiple-set-tempo-events.json';
+import noSetTempoEvent from '../fixtures/no-set-tempo-event.json';
+import oneSetTempoEvent from '../fixtures/one-set-tempo-event.json';
 
 describe('MidiFileSlicer', () => {
     describe('slice()', () => {
-        it('should slice the midi representation of default.json', () => {
-            const midiFileSlicer = new MidiFileSlicer({ json: dflt });
+        it('should slice a midi representation with no set tempo event', () => {
+            const midiFileSlicer = new MidiFileSlicer({ json: noSetTempoEvent });
 
             expect(midiFileSlicer.slice(500, 1000)).to.deep.equal([
                 {
@@ -32,8 +32,8 @@ describe('MidiFileSlicer', () => {
             ]);
         });
 
-        it('should slice the midi representation of 240-bpm.json', () => {
-            const midiFileSlicer = new MidiFileSlicer({ json: twoFourZero });
+        it('should slice a midi representation with one set tempo event', () => {
+            const midiFileSlicer = new MidiFileSlicer({ json: oneSetTempoEvent });
 
             expect(midiFileSlicer.slice(500, 1000)).to.deep.equal([
                 {
@@ -79,8 +79,8 @@ describe('MidiFileSlicer', () => {
             ]);
         });
 
-        it('should slice the midi representation of mixed-bpm.json', () => {
-            const midiFileSlicer = new MidiFileSlicer({ json: mixedBpm });
+        it('should slice a midi representation with multiple set tempo events', () => {
+            const midiFileSlicer = new MidiFileSlicer({ json: multipleSetTempoEvents });
 
             expect(midiFileSlicer.slice(500, 1000)).to.deep.equal([
                 {
