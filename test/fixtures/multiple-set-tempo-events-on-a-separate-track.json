@@ -1,0 +1,142 @@
+{
+    "division": 480,
+    "format": 1,
+    "tracks": [
+        [
+            {
+                "delta": 0,
+                "setTempo": {
+                    "microsecondsPerQuarter": 250000
+                }
+            },
+            {
+                "delta": 1200,
+                "setTempo": {
+                    "microsecondsPerQuarter": 500000
+                }
+            },
+            {
+                "delta": 0,
+                "endOfTrack": true
+            }
+        ],
+        [
+            {
+                "delta": 0,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOn": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 240,
+                "noteOff": {
+                    "noteNumber": 60,
+                    "velocity": 127
+                }
+            },
+            {
+                "delta": 0,
+                "endOfTrack": true
+            }
+        ]
+    ]
+}
