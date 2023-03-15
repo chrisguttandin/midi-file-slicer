@@ -47,12 +47,10 @@ export class MidiFileSlicer {
                     }
 
                     indexOfNextEvents[i] += 1;
-
-                    const offsetOfNextEvent = currentOffset + tracks[i][indexOfNextEvents[i]]?.delta ?? Number.POSITIVE_INFINITY;
-
-                    offsetOfNextEvents[i] = offsetOfNextEvent;
-                    nextOffset = Math.min(nextOffset, offsetOfNextEvent);
+                    offsetOfNextEvents[i] = currentOffset + (tracks[i][indexOfNextEvents[i]]?.delta ?? Number.POSITIVE_INFINITY);
                 }
+
+                nextOffset = Math.min(nextOffset, offsetOfNextEvents[i]);
             }
 
             currentOffset = nextOffset;
