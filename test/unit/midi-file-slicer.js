@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { MidiFileSlicer } from '../../src/midi-file-slicer';
 import multipleSetTempoEventsOnASeparateTrack from '../fixtures/multiple-set-tempo-events-on-a-separate-track.json';
 import multipleSetTempoEventsOnOneTrack from '../fixtures/multiple-set-tempo-events-on-one-track.json';
